@@ -31,8 +31,6 @@ function searchCity(name) {
 }
 
 function createAllCityBox() {
-    const citiesContainer = document.getElementById("cities");
-
     for (let i = 0; i < cities.length; i++) {
         const city = cities[i];
 
@@ -40,7 +38,7 @@ function createAllCityBox() {
         cityBox.className = "cityBox";
         cityBox.textContent = city.name;
 
-        citiesContainer.appendChild(cityBox);
+        cities_id.appendChild(cityBox);
     }
 }
 
