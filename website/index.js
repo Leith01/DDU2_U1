@@ -7,7 +7,6 @@ function init() {
     const h2Element = document.querySelector("h2");
 
     if (!targetCityName) {
-        alert("Du angav ingen stad. Try again!")
         h2Element.textContent = "Ingen stad angavs";
         return;
     }
@@ -19,7 +18,7 @@ function init() {
     else {
     h2Element.textContent = "Staden hittades inte!";
 }
-//    createAllCityBox();
+    createAllCityBox();
 //    createDistanceTable();
 }
 
@@ -31,11 +30,22 @@ function searchCity(name) {
     }
 }
 
-//function createAllCityBox() {
-    //.....}
+function createAllCityBox() {
+    const citiesContainer = document.getElementById("cities");
+
+    for (let i = 0; i < cities.length; i++) {
+        const city = cities[i];
+
+        const cityBox = document.createElement("div");
+        cityBox.className = "cityBox";
+        cityBox.textContent = city.name;
+
+        citiesContainer.appendChild(cityBox);
+    }
+}
 
 // Recommended: constants with references to existing HTML-elements
-//const cities = document.querySelector("#cities");
+const cities_id = document.querySelector("#cities");
 const target = document.querySelector(".target");
 const closest = document.querySelector(".closest");
 const furthest = document.querySelector(".furthest");
