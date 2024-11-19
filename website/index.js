@@ -2,6 +2,12 @@
 
 //En funktion för att initiera sidan
 function init() {
+  
+    createAllCityBox();
+//    createDistanceTable();
+}
+
+function addCity() {
     const targetCityName = prompt("Vilken stad?")
 
     const h2Element = document.querySelector("h2");
@@ -14,12 +20,9 @@ function init() {
     const targetCity = searchCity(targetCityName);
     if (targetCity) {
         h2Element.textContent = `${targetCity.name} (${targetCity.country})`;
+    } else {
+        h2Element.textContent = "Staden hittades inte!"; 
     }
-    else {
-    h2Element.textContent = "Staden hittades inte!";
-}
-    createAllCityBox();
-//    createDistanceTable();
 }
 
 function searchCity(name) {
@@ -40,6 +43,7 @@ function createAllCityBox() {
 
         cities_id.appendChild(cityBox);
     }
+    addCity();
 }
 
 // Recommended: constants with references to existing HTML-elements
