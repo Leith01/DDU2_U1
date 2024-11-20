@@ -15,7 +15,6 @@ function addCity() {
         return;
     }
 
-    const targetCity = searchCity(targetCityName);
     if (targetCity) {
         h2Element.textContent = `${targetCity.name} (${targetCity.country})`;
         title.textContent = `${targetCity.name}`;
@@ -83,10 +82,9 @@ function findDistanceToCity(targetCity) {
     return {closestCity, furthestCity, closeDistance, farDistance};
 }
 
-function markTargetCity(targetCity) {
+function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
     const cityBoxes = document.getElementsByClassName("cityBox");
-    const targetCity = searchCity(targetCityName)
-
+   
     for (let i = 0; i < cityBoxes.length; i++) {
         const cityBox = cityBoxes[i];
         const city = cities[i];
@@ -102,8 +100,6 @@ function markTargetCity(targetCity) {
     }
 }
 
-
-
 // Recommended: constants with references to existing HTML-elements
 const cities_id = document.querySelector("#cities");
 const target = document.querySelector(".target");
@@ -115,7 +111,6 @@ const h2Element = document.querySelector("h2");
 // Recommended: Ask for the city name and then the rest of the code
 
 const targetCityName = prompt("Vilken stad?")
-
-
+const targetCity = searchCity(targetCityName)
 
 init();
