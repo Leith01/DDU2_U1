@@ -4,6 +4,8 @@
 function init() {
   
     createAllCityBox();
+    addCity();
+    markTargetCity(targetCity);
 //    createDistanceTable();
 }
 
@@ -43,7 +45,6 @@ function createAllCityBox() {
 
         cities_id.appendChild(cityBox);
     }
-    addCity();
 }
 
 function findDistanceToCity(targetCity) {
@@ -84,18 +85,35 @@ function findDistanceToCity(targetCity) {
 
 function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
     const cityBoxes = document.getElementsByClassName("cityBox");
+
+
+    const {closestCity, furthestCity, closeDistance, farDistance} = findDistanceToCity(targetCity);
+
+    closestSpan.textContent = `${closestCity.name}`;
+    furthestSpan.textContent = `${furthestCity.name}`;
    
     for (let i = 0; i < cityBoxes.length; i++) {
         const cityBox = cityBoxes[i];
         const city = cities[i];
+        
 
         if (city.id === targetCity.id) {
-            cityBox[i].classList.add("target");
+            cityBox.classList.add("target");
             cityBox.textContent = `${city.name}`;
         }
 
         else if (city.id == closestCity.id) {
-           // cityBox[i].textContent = 
+            cityBox.classList.add("closest");
+            cityBox.textContent = `${city.name} ligger ${closeDistance / 10} mil bort`;
+        }
+
+        else if (city.id === furthestCity.id) {
+            cityBox.classList.add("furthest");
+            cityBox.textContent = `${city.name} ligger ${farDistance / 10} mil bort`;
+        }
+        else {
+            cityBox.classList.remove("target", "closest", "furthest");
+            cityBox.textContent = city.name;
         }
     }
 }
@@ -103,8 +121,8 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
 // Recommended: constants with references to existing HTML-elements
 const cities_id = document.querySelector("#cities");
 const target = document.querySelector(".target");
-const closest = document.querySelector(".closest");
-const furthest = document.querySelector(".furthest");
+const closestSpan = document.getElementById("closest");
+const furthestSpan = document.getElementById("furthest");
 const table = document.querySelector("#table");
 const title = document.querySelector("title");
 const h2Element = document.querySelector("h2");
