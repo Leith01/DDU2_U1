@@ -21,7 +21,8 @@ function addCity() {
         h2Element.textContent = `${targetCity.name} (${targetCity.country})`;
         title.textContent = `${targetCity.name}`;
     } else {
-        h2Element.textContent = "Staden hittades inte!"; 
+        h2Element.textContent = `${targetCityName} finns inte i databasen`;
+        h3Element.remove();
         title.textContent = "Not found";
     }
 }
@@ -128,6 +129,7 @@ const furthestSpan = document.getElementById("furthest");
 const table = document.querySelector("#table");
 const title = document.querySelector("title");
 const h2Element = document.querySelector("h2");
+const h3Element = document.querySelector("h3");
 // Recommended: Ask for the city name and then the rest of the code
 
 const targetCityName = prompt("Vilken stad?")
