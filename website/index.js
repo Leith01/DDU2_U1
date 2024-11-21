@@ -27,8 +27,10 @@ function addCity() {
 }
 
 function searchCity(name) {
+    const lowerCaseName = name.toLowerCase();
+
     for (let i = 0; i < cities.length; i++) {
-        if (cities[i].name === name) {
+        if (cities[i].name.toLowerCase() === lowerCaseName) {
             return cities[i];
         }
     }
