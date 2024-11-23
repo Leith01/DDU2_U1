@@ -123,12 +123,12 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
 
 function createDistanceTable() {
     const headerRow = document.createElement("div");
-    headerRow.classList.add("cell", "head_row");
+    headerRow.classList.add("head_row");
 
     const emptySpace = document.createElement("div");
     emptySpace.classList.add("cell", "head_row");
-    emptySpace.style.width = "79px";
-    emptySpace.style.height = "19px";
+    emptySpace.style.width = "80px";
+    emptySpace.style.height = "20px";
     headerRow.appendChild(emptySpace);
 
 
@@ -143,6 +143,7 @@ function createDistanceTable() {
 
     for (let i = 0; i < cities.length; i++) {
         const cityRow = document.createElement("div");
+        cityRow.classList.add(".row");
         const idNmrCell = document.createElement("div");
         idNmrCell.classList.add("cell", "head_column");
         idNmrCell.textContent = cities[i].id;
