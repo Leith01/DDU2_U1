@@ -126,20 +126,46 @@ function createDistanceTable() {
     headerRow.classList.add("cell", "head_row");
 
     for (let i = 0; i < cities.length; i++) {
-        const cityNameCell = document.createElement("div");
-        cityNameCell.classList.add("cell", "head_column");
-        cityNameCell.textContent = `${cities[i].id}-${cities[i].name}`;
-        headerRow.appendChild(cityNameCell);
-    }
-    table.appendChild(headerRow);
-
-    for (let i = 0; i < cities.length; i++) {
-        const cityRow = document.createElement("div");
         const idNmrCell = document.createElement("div");
         idNmrCell.classList.add("cell", "head_row");
         idNmrCell.textContent = cities[i].id;
-        cityRow.appendChild(idNmrCell);
+        headerRow.appendChild(idNmrCell);
     }
+    table.appendChild(headerRow);
+
+
+    for (let i = 0; i < cities.length; i++) {
+        const cityRow = document.createElement("div");
+        const cityNameCell = document.createElement("div");
+        cityNameCell.classList.add("cell", "head_column");
+        cityNameCell.textContent = `${cities[i].id}-${cities[i].name}`;
+        cityRow.appendChild(cityNameCell);
+
+        for (let j = 0; j < cities.length; j++) {
+            const distanceCell = document.createElement("div");
+            distanceCell.classList.add("cell");
+            const distance = findDistanceToCity(cities[i].id, cities[j].id);
+            distanceCell.textContent = `${distance / 10}`;
+            cityRow.appendChild(distanceCell);
+        }
+        table.appendChild(cityRow);
+    }
+}
+
+function findDistanceBetweenCities(city1Id, city2Id) {
+    for (let distanceObj of distances) {
+        if (distanceObj.city1 === city1Id) {
+            if (distanceObj.city2 === city2Id) {
+                return distanceObj.distance;
+            }
+        } 
+        if (distanceObj.city2 === city1Id) {
+            if (distanceObj.city1 === city2Id) {
+                return distanceObj.distance;
+            }
+        }
+    }
+    return null;
 }
 
 // Recommended: constants with references to existing HTML-elements
