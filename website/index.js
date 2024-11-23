@@ -125,6 +125,13 @@ function createDistanceTable() {
     const headerRow = document.createElement("div");
     headerRow.classList.add("cell", "head_row");
 
+    const emptySpace = document.createElement("div");
+    emptySpace.classList.add("cell", "head_row");
+    emptySpace.style.width = "79px";
+    emptySpace.style.height = "19px";
+    headerRow.appendChild(emptySpace);
+
+
     for (let i = 0; i < cities.length; i++) {
         const cityNameCell = document.createElement("div");
         cityNameCell.classList.add("cell", "head_row");
@@ -144,7 +151,7 @@ function createDistanceTable() {
         for (let j = 0; j < cities.length; j++) {
             const distanceCell = document.createElement("div");
             distanceCell.classList.add("cell");
-            const distance = findDistanceToCity(cities[i].id, cities[j].id);
+            const distance = findDistanceBetweenCities(cities[i].id, cities[j].id);
             distanceCell.textContent = `${distance / 10}`;
             cityRow.appendChild(distanceCell);
         }
