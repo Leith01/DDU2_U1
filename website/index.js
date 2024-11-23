@@ -6,7 +6,7 @@ function init() {
     createAllCityBox();
     addCity();
     markTargetCity(targetCity);
-//    createDistanceTable();
+    createDistanceTable();
 }
 
 function addCity() {
@@ -119,6 +119,31 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
             cityBox.textContent = city.name;
         }
     }
+}
+
+function createDistanceTable() {
+    const headerRow = document.createElement("div");
+    headerRow.classList.add("cell", "head_row");
+    const headerColumn = document.createElement("div");
+    headerRow.classList.add("cell", "head_column");
+
+
+    for (let i = 0; i < cities.length; i++) {
+        const cityNameCell = document.createElement("div");
+        cityNameCell.classList.add("cell", "head_row");
+        cityNameCell.textContent = cities[i].name;
+        headerRow.appendChild(cityNameCell);
+    }
+    table.appendChild(headerRow);
+
+    for (let i = 0; i < cities.length; i++) {
+        const cityRow = document.createElement("div");
+        const cityNameCell = document.createElement("div");
+        cityNameCell.classList.add("cell", "head_column");
+        cityNameCell.textContent = cities[i].name;
+        cityRow.appendChild(cityNameCell);
+    }
+    table.appendChild(headerColumn);
 }
 
 // Recommended: constants with references to existing HTML-elements
