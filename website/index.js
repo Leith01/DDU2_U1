@@ -126,20 +126,20 @@ function createDistanceTable() {
     headerRow.classList.add("cell", "head_row");
 
     for (let i = 0; i < cities.length; i++) {
-        const idNmrCell = document.createElement("div");
-        idNmrCell.classList.add("cell", "head_row");
-        idNmrCell.textContent = cities[i].id;
-        headerRow.appendChild(idNmrCell);
+        const cityNameCell = document.createElement("div");
+        cityNameCell.classList.add("cell", "head_row");
+        cityNameCell.textContent = `${cities[i].id}-${cities[i].name}`;
+        headerRow.appendChild(cityNameCell);
     }
     table.appendChild(headerRow);
 
 
     for (let i = 0; i < cities.length; i++) {
         const cityRow = document.createElement("div");
-        const cityNameCell = document.createElement("div");
-        cityNameCell.classList.add("cell", "head_column");
-        cityNameCell.textContent = `${cities[i].id}-${cities[i].name}`;
-        cityRow.appendChild(cityNameCell);
+        const idNmrCell = document.createElement("div");
+        idNmrCell.classList.add("cell", "head_column");
+        idNmrCell.textContent = cities[i].id;
+        cityRow.appendChild(idNmrCell);
 
         for (let j = 0; j < cities.length; j++) {
             const distanceCell = document.createElement("div");
