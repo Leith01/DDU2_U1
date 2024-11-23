@@ -148,12 +148,22 @@ function createDistanceTable() {
         idNmrCell.classList.add("cell", "head_column");
         idNmrCell.textContent = cities[i].id;
         cityRow.appendChild(idNmrCell);
+        idNmrCell.style.backgroundColor = "aliceblue";
 
         for (let j = 0; j < cities.length; j++) {
             const distanceCell = document.createElement("div");
             distanceCell.classList.add("cell");
             const distance = findDistanceBetweenCities(cities[i].id, cities[j].id);
             distanceCell.textContent = `${distance / 10}`;
+
+            if (i % 2 === 0) {
+                cityRow.classList.add("even_col");
+            }
+
+            if (j % 2 === 0) {
+                distanceCell.classList.add("even_row");
+            }
+
             cityRow.appendChild(distanceCell);
         }
         table.appendChild(cityRow);
