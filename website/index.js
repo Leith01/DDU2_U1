@@ -134,8 +134,8 @@ function createDistanceTable() {
 
     const emptySpace = document.createElement("div");
     emptySpace.classList.add("cell", "head_column");
-    emptySpace.style.width = "80px";
-    emptySpace.style.height = "20px";
+    emptySpace.textContent = "NoCity";
+    emptySpace.style.color = "rgba(0,0,0,0)";
     headerColumn.appendChild(emptySpace);
 
 
