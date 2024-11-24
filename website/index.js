@@ -14,22 +14,27 @@ function addCity() {
     if (!targetCityName) {
         h2Element.textContent = "Ingen stad angavs";
         title.textContent = "Not found"
-        return;
-    }
+        h3Element.remove();
+        createDistanceTable();
+    } else {
 
-    if (targetCity) {
+        if (targetCity) {
         h2Element.textContent = `${targetCity.name} (${targetCity.country})`;
         title.textContent = `${targetCity.name}`;
-    } else {
+        } else {
         h2Element.textContent = `${targetCityName} finns inte i databasen`;
         h3Element.remove();
         title.textContent = "Not found";
         createDistanceTable();
-
-    }
+        }
+    } 
 }
 
 function searchCity(name) {
+    if (!name) {
+        return null;
+    }
+
     const lowerCaseName = name.toLowerCase();
 
     for (let i = 0; i < cities.length; i++) {
