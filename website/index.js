@@ -122,30 +122,31 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
 }
 
 function createDistanceTable() {
-    const headerRow = document.createElement("div");
-    headerRow.classList.add("head_row");
+    const headerColumn = document.createElement("div");
+    headerColumn.classList.add("head_column");
 
     const emptySpace = document.createElement("div");
-    emptySpace.classList.add("cell", "head_row");
+    emptySpace.classList.add("cell", "head_column");
     emptySpace.style.width = "80px";
     emptySpace.style.height = "20px";
-    headerRow.appendChild(emptySpace);
+    headerColumn.appendChild(emptySpace);
 
 
     for (let i = 0; i < cities.length; i++) {
         const cityNameCell = document.createElement("div");
-        cityNameCell.classList.add("cell", "head_row");
+        cityNameCell.classList.add("cell", "head_column");
         cityNameCell.textContent = `${cities[i].id}-${cities[i].name}`;
-        headerRow.appendChild(cityNameCell);
+        headerColumn.appendChild(cityNameCell);
     }
-    table.appendChild(headerRow);
+    table.appendChild(headerColumn);
 
 
+    const nameCells = headerColumn.querySelectorAll(".cell");
     for (let i = 0; i < cities.length; i++) {
         const cityRow = document.createElement("div");
         cityRow.classList.add(".row");
         const idNmrCell = document.createElement("div");
-        idNmrCell.classList.add("cell", "head_column");
+        idNmrCell.classList.add("cell", "head_row");
         idNmrCell.textContent = cities[i].id;
         cityRow.appendChild(idNmrCell);
         idNmrCell.style.backgroundColor = "aliceblue";
@@ -158,6 +159,7 @@ function createDistanceTable() {
 
             if (i % 2 === 0) {
                 cityRow.classList.add("even_col");
+                
             }
 
             if (j % 2 === 0) {
@@ -165,6 +167,11 @@ function createDistanceTable() {
             }
 
             cityRow.appendChild(distanceCell);
+
+            const nameCell = nameCells[j + 1];
+            if (j % 2 === 0) {
+                nameCell.style.borderBottom = "2px solid black";
+            }
         }
         table.appendChild(cityRow);
     }
