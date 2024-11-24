@@ -154,8 +154,14 @@ function createDistanceTable() {
         for (let j = 0; j < cities.length; j++) {
             const distanceCell = document.createElement("div");
             distanceCell.classList.add("cell");
-            const distance = findDistanceBetweenCities(cities[i].id, cities[j].id);
-            distanceCell.textContent = `${distance / 10}`;
+
+            if (i === j) {
+                distanceCell.textContent = "0";
+                distanceCell.style.color = "rgba(0,0,0,0)"
+            } else {
+                const distance = findDistanceBetweenCities(cities[i].id, cities[j].id);
+                distanceCell.textContent = `${distance / 10}`;
+            }   
 
             if (i % 2 === 0) {
                 cityRow.classList.add("even_col");
