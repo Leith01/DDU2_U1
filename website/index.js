@@ -34,16 +34,25 @@ function searchCity(name) {
     if (!name) {
         return null;
     }
-
-    const lowerCaseName = name.toLowerCase();
+    const normalizedInput = name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
     for (let i = 0; i < cities.length; i++) {
-        if (cities[i].name.toLowerCase() === lowerCaseName) {
+        const cityNameNormalized = cities[i].name
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        if (cityNameNormalized === normalizedInput) {
             return cities[i];
         }
     }
     return null;
 }
+
+
 
 function createAllCityBox() {
     for (let i = 0; i < cities.length; i++) {
