@@ -1,8 +1,17 @@
-// Recommended: All functions declared here
+const cities_id = document.querySelector("#cities");
+const target = document.querySelector(".target");
+const closestSpan = document.getElementById("closest");
+const furthestSpan = document.getElementById("furthest");
+const table = document.querySelector("#table");
+const title = document.querySelector("title");
+const h2Element = document.querySelector("h2");
+const h3Element = document.querySelector("h3");
 
-//En funktion för att initiera sidan
+const targetCityName = prompt("Vilken stad?")
+const targetCity = searchCity(targetCityName)
+
 function init() {
-  
+
     createAllCityBox();
     addCity();
     markTargetCity(targetCity);
@@ -10,7 +19,6 @@ function init() {
 }
 
 function addCity() {
-    
     if (!targetCityName) {
         h2Element.textContent = "Ingen stad angavs";
         title.textContent = "Not found"
@@ -52,8 +60,6 @@ function searchCity(name) {
     return null;
 }
 
-
-
 function createAllCityBox() {
     for (let i = 0; i < cities.length; i++) {
         const city = cities[i];
@@ -67,7 +73,7 @@ function createAllCityBox() {
 }
 
 function findDistanceToCity(targetCity) {
-    let closestCity = null; //null eftersom att vi inte har något objekt att jämföra med
+    let closestCity = null; 
     let furthestCity = null;  //null eftersom att vi inte har något objekt att jämföra med
     let closeDistance = 0;
     let farDistance = 0;
@@ -102,10 +108,8 @@ function findDistanceToCity(targetCity) {
     return {closestCity, furthestCity, closeDistance, farDistance};
 }
 
-function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
+function markTargetCity(targetCity) {
     const cityBoxes = document.getElementsByClassName("cityBox");
-
-
     const {closestCity, furthestCity, closeDistance, farDistance} = findDistanceToCity(targetCity);
 
     closestSpan.textContent = `${closestCity.name}`;
@@ -115,7 +119,6 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
         const cityBox = cityBoxes[i];
         const city = cities[i];
         
-
         if (city.id === targetCity.id) {
             cityBox.classList.add("target");
             cityBox.textContent = `${city.name}`;
@@ -140,13 +143,11 @@ function markTargetCity(targetCity) { //KONVENTERA FRÅN KM TILL MIL!!!!!!!!!
 function createDistanceTable() {
     const headerColumn = document.createElement("div");
     headerColumn.classList.add("head_column");
-
     const emptySpace = document.createElement("div");
     emptySpace.classList.add("cell", "head_column");
     emptySpace.textContent = "NoCity";
     emptySpace.style.color = "rgba(0,0,0,0)";
     headerColumn.appendChild(emptySpace);
-
 
     for (let i = 0; i < cities.length; i++) {
         const cityNameCell = document.createElement("div");
@@ -155,7 +156,6 @@ function createDistanceTable() {
         headerColumn.appendChild(cityNameCell);
     }
     table.appendChild(headerColumn);
-
 
     const nameCells = headerColumn.querySelectorAll(".cell");
     for (let i = 0; i < cities.length; i++) {
@@ -181,7 +181,6 @@ function createDistanceTable() {
 
             if (i % 2 === 0) {
                 cityRow.classList.add("even_col");
-                
             }
 
             if (j % 2 === 0) {
@@ -214,19 +213,5 @@ function findDistanceBetweenCities(city1Id, city2Id) {
     }
     return null;
 }
-
-// Recommended: constants with references to existing HTML-elements
-const cities_id = document.querySelector("#cities");
-const target = document.querySelector(".target");
-const closestSpan = document.getElementById("closest");
-const furthestSpan = document.getElementById("furthest");
-const table = document.querySelector("#table");
-const title = document.querySelector("title");
-const h2Element = document.querySelector("h2");
-const h3Element = document.querySelector("h3");
-// Recommended: Ask for the city name and then the rest of the code
-
-const targetCityName = prompt("Vilken stad?")
-const targetCity = searchCity(targetCityName)
 
 init();
