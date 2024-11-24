@@ -24,6 +24,8 @@ function addCity() {
         h2Element.textContent = `${targetCityName} finns inte i databasen`;
         h3Element.remove();
         title.textContent = "Not found";
+        createDistanceTable();
+
     }
 }
 
