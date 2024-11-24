@@ -74,7 +74,7 @@ function createAllCityBox() {
 
 function findDistanceToCity(targetCity) {
     let closestCity = null; 
-    let furthestCity = null;  //null eftersom att vi inte har något objekt att jämföra med
+    let furthestCity = null; 
     let closeDistance = 0;
     let farDistance = 0;
 
