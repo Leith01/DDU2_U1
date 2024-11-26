@@ -11,7 +11,6 @@ const targetCityName = prompt("Vilken stad?")
 const targetCity = searchCity(targetCityName)
 
 function init() {
-
     createAllCityBox();
     addCity();
     markTargetCity(targetCity);
@@ -25,7 +24,6 @@ function addCity() {
         h3Element.remove();
         createDistanceTable();
     } else {
-
         if (targetCity) {
         h2Element.textContent = `${targetCity.name} (${targetCity.country})`;
         title.textContent = `${targetCity.name}`;

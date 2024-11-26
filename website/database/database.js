@@ -1,4 +1,3 @@
-
 const cities = [
   { id: 0, name: "Strasbourg", country: "France", latitude: 48.583, longitude: 7.745, inhabitants: 291313, elevation: 132 },
   { id: 1, name: "Bordeaux", country: "France", latitude: 44.837, longitude: -0.579, inhabitants: 261804, elevation: 6 },
